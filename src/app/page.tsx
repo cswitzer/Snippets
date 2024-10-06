@@ -1,10 +1,11 @@
 import Link from "next/link";
 
 import { db } from "@/db";
+import { Snippet } from "@prisma/client";
 
 export default async function Home() {
 	const snippets = await db.snippet.findMany();
-	const renderedSnippets = snippets.map((snippet) => {
+	const renderedSnippets = snippets.map((snippet: Snippet) => {
 		return (
 			<Link
 				key={snippet.id}

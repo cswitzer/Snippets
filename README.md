@@ -69,3 +69,10 @@ Methods for calling server action from client component:
 2. useFormState injects a formState object into our HTML, and is sent along to the server action upon form submission
 3. The formState object will be injected in a client component, which will be used to render an error message in HTML on the server
 4. The object will then be sent to the user's browser (hence, no JavaScript is needed)
+
+10/04/2024
+
+1. useFormState is run on the server (unlike traditional hooks, which are only run on the browser)
+2. For errors, it is better to return/update formState than to redirect to an error page. Opt for that instead
+3. The next redirect('/') function throws a special error NEXT_REDIRECT. Like Error, but Next does not treat it like one
+4. For the above part, this means to never put a redirect inside a try catch
